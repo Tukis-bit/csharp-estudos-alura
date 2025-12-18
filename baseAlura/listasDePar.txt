@@ -1,0 +1,77 @@
+List <double> listaEscolhida = new List <double>(); 
+
+ExibirMenu();
+
+void ExibirMenu()
+{
+    Console.Clear();
+    Console.WriteLine("Ver uma lista dos pares do um ao 10. Digite 1: ");
+    Console.WriteLine("Ver uma lista dos pares escolhendo o inicio e o fim da lista. Digite 2: ");
+    Console.WriteLine("Sair. Digite 0");
+    int opcao = int.Parse(Console.ReadLine()!);
+
+    switch (opcao)
+    {
+        case 1: MostrarParNormal();
+        break;
+        
+        case 2: MostrarParEscolhido();
+        break;
+
+        case 0: Console.WriteLine("Obrigado por participar!!");
+        break;
+    }
+
+}
+
+void MostrarParNormal()
+{
+    Console.Clear();
+    Console.WriteLine("Em uma lista de 1 a 10 os pares são: \n");
+
+    for(int i = 1; i <= 10; i++)
+    {
+        if(i % 2 == 0)
+        {
+            Console.WriteLine(i);
+        }
+    }
+     
+     Console.Write("\nDigite qualquer tecla para voltar ao menu: ");
+     Console.ReadKey();
+     ExibirMenu();
+
+}
+
+void MostrarParEscolhido()
+{
+    listaEscolhida.Clear();
+
+    Console.Clear();
+    Console.Write("Para iniciar, escolha o inicio da lista: ");
+    double inicio = int.Parse(Console.ReadLine());
+
+    Console.Write("\nAgora escolha o fim da lista:");
+    double fim = int.Parse(Console.ReadLine());
+
+    for(double i = inicio; i <= fim; i++)
+    {
+        listaEscolhida.Add(i);
+
+    }
+
+    Console.WriteLine($"\nOs números pares entre {inicio} e {fim} sâo:\n ");
+
+    foreach(double numero in listaEscolhida)
+    {
+        if(numero % 2 == 0)
+        {
+            Console.WriteLine(numero);
+        }
+    }
+
+      Console.Write("\nDigite qualquer tecla para voltar ao menu: ");
+     Console.ReadKey();
+     ExibirMenu();
+}
+

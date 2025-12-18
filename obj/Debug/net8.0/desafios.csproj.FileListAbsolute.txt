@@ -12,3 +12,4 @@
 /home/Arthur/Documentos/AluraC#/desafios /obj/Debug/net8.0/desafios.pdb
 /home/Arthur/Documentos/AluraC#/desafios /obj/Debug/net8.0/desafios.genruntimeconfig.cache
 /home/Arthur/Documentos/AluraC#/desafios /obj/Debug/net8.0/ref/desafios.dll
+/home/Arthur/Documentos/AluraC#/desafios /obj/Debug/net8.0/desafios.sourcelink.json
