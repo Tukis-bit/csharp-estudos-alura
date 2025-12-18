@@ -1,0 +1,16 @@
+# Pastas de build
+bin/
+obj/
+
+# Configurações do VS Code
+.vscode/
+
+# Arquivos temporários do sistema
+*.log
+*.tmp
+*.user
+*.DS_Store
+
+# Pacotes NuGet
+*.nupkg
+packages/
