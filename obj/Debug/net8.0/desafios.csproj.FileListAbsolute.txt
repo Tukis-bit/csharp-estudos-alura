@@ -1,0 +1,14 @@
+/home/Arthur/Documentos/AluraC#/desafios /bin/Debug/net8.0/desafios
+/home/Arthur/Documentos/AluraC#/desafios /bin/Debug/net8.0/desafios.deps.json
+/home/Arthur/Documentos/AluraC#/desafios /bin/Debug/net8.0/desafios.runtimeconfig.json
+/home/Arthur/Documentos/AluraC#/desafios /bin/Debug/net8.0/desafios.dll
+/home/Arthur/Documentos/AluraC#/desafios /bin/Debug/net8.0/desafios.pdb
+/home/Arthur/Documentos/AluraC#/desafios /obj/Debug/net8.0/desafios.GeneratedMSBuildEditorConfig.editorconfig
+/home/Arthur/Documentos/AluraC#/desafios /obj/Debug/net8.0/desafios.AssemblyInfoInputs.cache
+/home/Arthur/Documentos/AluraC#/desafios /obj/Debug/net8.0/desafios.AssemblyInfo.cs
+/home/Arthur/Documentos/AluraC#/desafios /obj/Debug/net8.0/desafios.csproj.CoreCompileInputs.cache
+/home/Arthur/Documentos/AluraC#/desafios /obj/Debug/net8.0/desafios.dll
+/home/Arthur/Documentos/AluraC#/desafios /obj/Debug/net8.0/refint/desafios.dll
+/home/Arthur/Documentos/AluraC#/desafios /obj/Debug/net8.0/desafios.pdb
+/home/Arthur/Documentos/AluraC#/desafios /obj/Debug/net8.0/desafios.genruntimeconfig.cache
+/home/Arthur/Documentos/AluraC#/desafios /obj/Debug/net8.0/ref/desafios.dll
