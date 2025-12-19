@@ -1,0 +1,8 @@
+Console.Clear();
+Console.Write("Me informe o ano que você nasceu para que eu calcule quantos anos você tem: ");
+int ano = int.Parse(Console.ReadLine()!);
+Thread.Sleep(1500);
+
+int idade = 2025 - ano;
+
+Console.WriteLine($"\nComo você nasceu em {ano}, você tem {idade} anos");

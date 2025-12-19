@@ -1,0 +1,30 @@
+Console.Clear();
+
+Console.Write("Digite o primeiro numero: ");
+double num1 = double.Parse(Console.ReadLine()!);
+
+Console.Write("\nDigite o segundo numero: ");
+double num2 = double.Parse(Console.ReadLine()!);
+
+Console.Write("\nDigite a operação (+ - * /): ");
+string operacao = Console.ReadLine()!;
+
+double resultado = operacao switch
+{
+    "+" => num1 + num2,
+    "-" => num1 - num2,
+    "*" => num1 * num2,
+    "/" => num1 / num2,
+     _ => 9999999999999999999
+
+};
+
+switch (resultado)
+{
+    case 9999999999999999999 : 
+    Console.WriteLine("\nOperação inválida");
+    break;
+    default :
+    Console.WriteLine($"\n{num1} {operacao} {num2} = {resultado}");
+    break;
+}

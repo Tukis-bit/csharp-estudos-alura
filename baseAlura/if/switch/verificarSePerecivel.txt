@@ -1,0 +1,16 @@
+Console.Clear();
+Console.Write("Digite o códigp do produto (1 ou 2): ");
+int codigo = int.Parse(Console.ReadLine()!);
+
+if(codigo == 1)
+{
+    Console.WriteLine("Perecivel");
+}
+else if(codigo == 2)
+{
+    Console.WriteLine("Não perecivel");
+}
+else
+{
+    Console.WriteLine("Produto inválido");
+}

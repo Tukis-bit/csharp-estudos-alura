@@ -1,0 +1,18 @@
+Console.Clear();
+
+Console.Write("Me informe o valor que você tem em conta: ");
+double valor = double.Parse(Console.ReadLine()!);
+
+if(valor < 0)
+{
+    Console.WriteLine("\nVocê tem um valor negativo na conta");
+}
+else if(valor == 0)
+{
+    Console.WriteLine("\nSeu saldo é nulo");
+}
+
+else
+{
+    Console.WriteLine("\nTudo ok com a sua conta");
+}

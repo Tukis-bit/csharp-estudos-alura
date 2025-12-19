@@ -1,0 +1,27 @@
+Console.WriteLine("""
+    1 - Manhã
+    2 - Tarde
+    3 - Noite
+ 
+    Que momento do dia é agora?
+    """);
+int momento = int.Parse(Console.ReadLine());
+ 
+Console.WriteLine("Qual o seu nome? ");
+string nome = Console.ReadLine();
+ 
+switch(momento)
+{
+    case 1:
+        Console.WriteLine($"Bom dia, {nome}");
+        break;
+    case 2:
+        Console.WriteLine($"Boa tarde, {nome}");
+        break;
+    case 3:
+        Console.WriteLine($"Boa noite, {nome}");
+        break;
+    default:
+        Console.WriteLine("Entrada inválida");
+        break;
+}

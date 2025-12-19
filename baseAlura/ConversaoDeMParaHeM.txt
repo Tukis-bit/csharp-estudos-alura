@@ -1,0 +1,17 @@
+Console.Clear();
+
+Console.Write("Me informe o valor em minutos que você quer converter para horas: ");
+int valor = int.Parse(Console.ReadLine()!);
+
+if(valor >= 60)
+{
+    int minutos = valor % 60;
+    int horas = (valor - minutos) / 60;
+
+    Console.WriteLine($"\nIsso são {horas} horas e {minutos} minutos");
+
+}
+else
+{
+     Console.WriteLine($"\nIsso são 0 horas e {valor} minutos");
+}
