@@ -1,0 +1,14 @@
+Console.Clear();
+
+Console.Write("Me inform o número para eu retornar a tabuada: ");
+int numero = int.Parse(Console.ReadLine()!);
+
+Console.WriteLine();
+
+for(int i = 1;i <= 10; i++)
+{
+    int conta = numero * i;
+
+    Console.WriteLine($"{numero} X {i} = {conta}");
+    
+}

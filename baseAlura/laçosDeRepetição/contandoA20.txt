@@ -1,0 +1,10 @@
+for(int i = 1; i <= 20; i++)
+{
+    //se for multiplo de 3 não conta
+    if(i % 3 == 0)
+    {
+        continue;
+    }
+
+    Console.WriteLine(i);
+}

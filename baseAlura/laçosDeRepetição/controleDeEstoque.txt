@@ -1,0 +1,17 @@
+Quantidade:
+5
+Estoque atual: 5
+
+Deseja continuar?
+1 - Sim | 0 - Não
+1
+
+Quantidade:
+10
+Estoque atual: 15
+
+Deseja continuar?
+1 - Sim | 0 - Não
+0
+
+Obrigado por usar nosso sistema de estoque!

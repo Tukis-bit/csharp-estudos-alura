@@ -1,0 +1,19 @@
+using System.Diagnostics.CodeAnalysis;
+
+Console.Clear();
+
+List<int> notas = new List<int> {5,6,4,7,8,9,1,4,7,3};
+
+foreach(int nota in notas)
+{
+    string resultado;
+    if(nota <= 4)
+    {
+        resultado = "reprovado";
+    }
+    else
+    {
+        resultado = "aprovado";
+    }
+    Console.WriteLine($"Nota {nota} está {resultado}");
+}
