@@ -1,0 +1,29 @@
+//Classe.cs
+
+public class Conta
+{
+    public int indicador;
+    public string titular = "";
+    public double saldo;
+    public string senha = "";
+
+
+    public void ExibirInfos()
+    {
+        Console.WriteLine($"Indicador: {indicador}");
+        Console.WriteLine($"Titular: {titular}");
+        Console.WriteLine($"Saldo: {saldo}");
+        Console.WriteLine($"Senha: {senha}");
+    }
+}
+
+//program.cs
+
+Conta arthur = new Conta();
+
+arthur.indicador = 1567;
+arthur.saldo = 2800.56;
+arthur.titular = "Arthur Rafael";
+arthur.senha = "Arthur";
+
+arthur.ExibirInfos();

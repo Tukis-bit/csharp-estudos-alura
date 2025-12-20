@@ -3,5 +3,8 @@
 Musica musica1 = new Musica();
 musica1.nome = "Roxanne";
 musica1.artista = "The Police";
+musica1.duracao = 273;
 
-Console.WriteLine(musica1.nome);
+
+
+musica1.ExibirMusica();
