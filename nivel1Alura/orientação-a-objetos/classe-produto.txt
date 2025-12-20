@@ -1,0 +1,10 @@
+public class Produto
+{
+    public string nome;
+    public string marca;
+    public double preco;
+    public int estoque;
+
+    public string Descricao =>
+    $"O produto {nome}, da marca {marca} tem o preço de R$ {preco} e uma quantidade de {estoque} unidades no estoque";
+}
