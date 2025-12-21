@@ -4,6 +4,7 @@
     public string Artista {get; set;} = "";
     public int Duracao {get; set;}
     public bool Disponivel{set; get;}
+    public Genero genero { get; set; }
     //escrever a palavra prop + tab já faz a extrutura da propriedade com get e set
     //set = escrever/dar valor
     //get = ler/pegar valor

@@ -1,0 +1,55 @@
+//classe conta
+public class Conta
+{
+   
+    public string Agencia { get; set; }
+    public int NumeroConta { get; set; }
+    public double Limite { get; set; }
+    public double Saldo { get; set; }
+    private Titular titular { get; set; }
+    
+    public void SetTitular(Titular value)
+    {
+        titular = value;
+    }
+
+    public void ExibirInfos()
+    {
+        Console.WriteLine(@$"
+        Titular da conta: {titular.Nome}
+        Idade do titular: {titular.Idade}
+        
+        Agência: {Agencia}
+        Numero da conta: {NumeroConta}
+        Limite da conta: {Limite}
+        Saldo disponível: {Saldo}
+        
+        ");
+    }
+}
+
+//classe tiitular
+
+public class Titular
+{
+    public string Nome { get; set; }
+    public int Idade { get; set; }
+    
+}
+
+//program.cs
+
+Console.Clear();
+
+Titular titular = new Titular();
+titular.Nome = "Arthur";
+titular.Idade = 18;
+
+Conta conta = new Conta();
+conta.Agencia = "Itaú";
+conta.NumeroConta = 17;
+conta.Limite = 3000.00;
+conta.Saldo = 250.59;
+
+conta.SetTitular(titular);
+conta.ExibirInfos();
