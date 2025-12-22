@@ -14,4 +14,8 @@ musica2.Duracao = 180;
 album1.AdicionarMusica(musica1);
 album1.AdicionarMusica(musica2);
 
-album1.ExibirMusicas();
+Banda banda1 = new Banda();
+banda1.Nome = "30 pra 1";
+banda1.AdicionarAlbum(album1);
+
+banda1.ExibirDiscografia();
