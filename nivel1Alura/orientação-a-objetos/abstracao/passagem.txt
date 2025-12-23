@@ -1,0 +1,19 @@
+class Passagem
+{
+    public Passagem(string passageiro, string destino)
+    {
+        Passageiro = passageiro;
+        Destino = destino;
+    }
+
+    public string Passageiro { get;}
+    public string Destino { get;}
+}
+
+Passagem passagem = new("Lucas Souza","Paris");
+
+Console.WriteLine(@$"Nome: {passagem.Passageiro}
+Destino: {passagem.Destino}");
+
+
+

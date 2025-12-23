@@ -1,0 +1,43 @@
+public class Filme
+{
+    public Filme(string titulo, int classificacao)
+    {
+        Titulo = titulo;
+        Classificacao = classificacao;
+    }
+
+    public string Titulo { get;  }
+    public int Classificacao { get; }
+
+    private bool PodeAssistir(int idade)
+    {
+        if(idade >= 18)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void ExibirResultado(int idade)
+    {
+        if(PodeAssistir(idade))
+        {
+            Console.WriteLine($"Usuário com {idade} anos pode assistir ao filme {Titulo}");
+
+        }
+        else
+        {
+           Console.WriteLine($"Usuário com {idade} anos não pode assistir ao filme {Titulo}"); 
+        }
+    }
+}
+
+Console.Clear();
+
+Filme filme = new("Matrix",16);
+filme.ExibirResultado(14);
+filme.ExibirResultado(20);
+

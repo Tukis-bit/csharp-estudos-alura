@@ -1,0 +1,38 @@
+public class Funcionario
+{
+    public string Nome { get; set; }
+    public string Cargo { get; set; }
+ 
+    public Funcionario(string nome, string cargo)
+    {
+        Nome = nome;
+        Cargo = cargo;
+    }
+ 
+    public void Promover(string novoCargo)
+    {
+        if (novoCargo != Cargo)
+        {
+            Cargo = novoCargo;
+            Console.WriteLine("Promoção realizada com sucesso!");
+        }
+        else
+        {
+            Console.WriteLine("Erro: O novo cargo deve ser diferente do cargo atual.");
+        }
+    }
+}
+ 
+
+        Funcionario funcionario = new Funcionario("Carlos Pereira", "Assistente Administrativo");
+ 
+        Console.WriteLine("Funcionário: " + funcionario.Nome);
+        Console.WriteLine("Cargo Atual: " + funcionario.Cargo);
+ 
+        funcionario.Promover("Assistente Administrativo"); // Tentativa inválida
+        funcionario.Promover("Analista de Projetos");       // Promoção válida
+ 
+        Console.WriteLine("--- Após promoção ---");
+        Console.WriteLine("Funcionário: " + funcionario.Nome);
+        Console.WriteLine("Cargo Atual: " + funcionario.Cargo);
+    

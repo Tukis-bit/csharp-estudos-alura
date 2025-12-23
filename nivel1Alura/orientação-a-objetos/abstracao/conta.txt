@@ -1,0 +1,22 @@
+public class ContaBancaria
+{
+    public string NumeroConta { get; set; }
+    public double Saldo { get; set; }
+
+    public ContaBancaria(string numeroConta, double saldoInicial)
+    {
+        NumeroConta = numeroConta;
+        Saldo = saldoInicial;
+    }
+
+    public void Depositar(double valor)
+    {
+        Saldo += valor;
+    }
+}
+
+ContaBancaria conta = new("78901-2", 1000.00);
+conta.Depositar(500.00);
+
+Console.WriteLine("Conta: " + conta.NumeroConta);
+Console.WriteLine("Saldo atual: R$ " + conta.Saldo.ToString("F2"));
