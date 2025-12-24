@@ -1,0 +1,39 @@
+namespace Alura.Filmes;
+
+class Filmes
+{
+    private List<string> elenco = new();
+    public Filmes(string titulo)
+    {
+        Titulo = titulo;
+    }
+
+    public string Titulo { get; }
+    public int Duracao { get; set; }
+    
+    public void AdicionarParticipante(string participante)
+    {
+        elenco.Add(participante);
+    }
+
+    public void MostrarElenco()
+    {
+        Console.WriteLine($"Elenco do filme {Titulo}:\n");
+        elenco.ForEach( e => Console.WriteLine($"Participante: {e}"));
+        
+    } 
+}
+
+using Alura.Filmes;
+Dictionary<string, Filmes> filmes = new();
+
+Filmes filme1 = new("Moana");
+Filmes filme2 = new("Moana2");
+Filmes filme3 = new("Avatar Fogo e Cinzas");
+Filmes filme4 = new("Todos menos você");
+Filmes filme5 = new("Rapunzel");
+
+
+filmes.Add("Moana",filme1);
+ 
+
