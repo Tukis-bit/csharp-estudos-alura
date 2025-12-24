@@ -1,7 +1,7 @@
 namespace ScreenSound.models;
 
 
-class Episodio
+internal class Episodio
 {
     List<string> convidados = new();
 

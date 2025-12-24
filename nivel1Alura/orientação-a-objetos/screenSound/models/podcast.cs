@@ -1,7 +1,7 @@
 namespace ScreenSound.models;
 
 
-class Podcast
+internal class Podcast
 {
     List <Episodio> episodios = new();
 

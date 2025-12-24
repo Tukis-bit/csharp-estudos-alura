@@ -1,17 +1,23 @@
 namespace ScreenSound.models;
 
-class Banda
+internal class Banda
 {
     private List<Album> albuns = new List<Album>();
-    private List <int> notas = new();
+    private List <Avaliacao> notas = new();
 
     public Banda(string nome)
     {
         Nome =  nome;
     }
     public string Nome { get; }
-    public double MediaDeNotas => 
-    notas.Average();
+    public double MediaDeNotas
+    {
+        get
+        {
+            if(notas.Count == 0) return 0;
+            else return notas.Average(n => n.Nota);
+        }
+    }
 
     public void AdicionarAlbum(Album album)
     {
@@ -24,7 +30,7 @@ class Banda
     albuns.ForEach(album => Console.WriteLine(@$"Álbum: {album.Nome} ({album.DuracaoTotal})"));
     }
 
-    public void AdicionarNota(int nota)
+    public void AdicionarNota(Avaliacao nota)
     {
         notas.Add(nota);
     }
