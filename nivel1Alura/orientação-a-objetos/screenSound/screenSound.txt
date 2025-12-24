@@ -1,5 +1,6 @@
-﻿using ScreenSound.models;
+using System.Runtime.InteropServices;
 
+//List <string> bandas = new List<string>();
 Dictionary<string, List<int>> bandas = new Dictionary<string, List<int>>();
 
 
