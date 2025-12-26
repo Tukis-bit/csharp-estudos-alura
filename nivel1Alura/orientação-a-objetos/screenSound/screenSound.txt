@@ -3,9 +3,10 @@ using ScreenSound.models;
 Dictionary<string, Banda> bandas = new();
 
 Banda banda = new("30 pra 1");
-banda.AdicionarNota(10);
-banda.AdicionarNota(8);
-banda.AdicionarNota(6);
+banda.AdicionarNota(new Avaliacao(10));
+banda.AdicionarNota(new Avaliacao(8));
+banda.AdicionarNota(new Avaliacao(6));
+bandas.Add("30 pra 1", banda);
 
 ExibirMenu();
 
@@ -137,10 +138,10 @@ void DarNotaBanda()
     {
         Banda banda = bandas[bandaNome];
         Console.Write($"Qual nota a {banda.Nome} merece: ");
-        int nota = int.Parse(Console.ReadLine()!);
+        Avaliacao nota = Avaliacao.Parse(Console.ReadLine()!);
         banda.AdicionarNota(nota);
 
-        Console.WriteLine($"\nNota {nota} Registrada para a banda {banda.Nome}");
+        Console.WriteLine($"\nNota {nota.Nota} Registrada para a banda {banda.Nome}");
         Thread.Sleep(1500);
 
         ExibirMenu();

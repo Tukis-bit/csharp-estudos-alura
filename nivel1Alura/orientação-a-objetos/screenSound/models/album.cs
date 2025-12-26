@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace ScreenSound.models;
 
 
@@ -8,9 +10,12 @@ internal class Album
     public Album(string nome)
     {
         Nome = nome;
+        ContadorDeObjetos++;
+        
     }
     public string Nome { get; }
     public int DuracaoTotal => musicas.Sum(m => m.Duracao);
+    public static int ContadorDeObjetos = 0;
 
     public void AdicionarMusica(Musica musica)
     {
@@ -25,5 +30,6 @@ internal class Album
         Console.WriteLine($"\nPara ouvir esse álbum inteiro você precisa ouvir {DuracaoTotal} segundos");
     }
 
+  
     
 }
