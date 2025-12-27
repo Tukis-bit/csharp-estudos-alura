@@ -8,6 +8,7 @@ opcoes.Add(2, new MenuMostrarListaBandas());
 opcoes.Add(3, new MenuDarNota());
 opcoes.Add(4, new MenuExibirMedia());
 opcoes.Add(5, new MenuRegistrarAlbum());
+opcoes.Add(6, new MenuDarNotaAlbum());
 
 
 
@@ -41,6 +42,7 @@ void ExibirMenu()
     Console.WriteLine("Digite 3 para avaliar uma banda ");
     Console.WriteLine("Digite 4 para exibir a média de uma banda");
     Console.WriteLine("Digite 5 para Registrar um novo álbum");
+    Console.WriteLine("Digite 6 para Aváliar um álbum");
     Console.WriteLine("Digite -1 pra sair");
     Console.Write("\nDigite a opção: ");
 

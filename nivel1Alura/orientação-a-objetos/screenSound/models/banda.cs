@@ -1,8 +1,8 @@
 namespace ScreenSound.models;
 
-internal class Banda
+internal class Banda : Iavaliavel
 {
-    private List<Album> albuns = new List<Album>();
+    public List<Album> albuns = new List<Album>();
     private List <Avaliacao> notas = new();
 
     public Banda(string nome)
@@ -10,7 +10,7 @@ internal class Banda
         Nome =  nome;
     }
     public string Nome { get; }
-    public double MediaDeNotas
+    public double Media
     {
         get
         {

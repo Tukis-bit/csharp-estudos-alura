@@ -15,7 +15,7 @@ internal class MenuExibirMedia : Menu
     if (bandas.ContainsKey(bandaNome))
     {
         Banda banda = bandas[bandaNome];
-        Console.WriteLine($"A média da {banda.Nome} é {banda.MediaDeNotas} ");
+        Console.WriteLine($"A média da {banda.Nome} é {banda.Media} ");
 
         Console.Write("Digite uma tecla para voltar ao menu:");
         Console.ReadKey();
