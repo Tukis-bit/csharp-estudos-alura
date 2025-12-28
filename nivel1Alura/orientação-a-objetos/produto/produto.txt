@@ -1,0 +1,22 @@
+using produto.produto;
+Console.Clear();
+ProdutoFisico item1 = new ProdutoFisico("imagem", "teclado ",
+    "perfeito para produtividade diária.",
+    80.00m, 8);
+
+ProdutoDigital item2 = new ProdutoDigital("imagem", "Ebook c#",
+"muito bom",100.00m,"Link");
+
+Console.WriteLine(@$"Dados do item 1:
+    Nome: {item1.Nome};
+    Descrição: {item1.Descricao};
+    Preço: {item1.Preco};
+    Estoque: {item1.Estoque};
+");
+
+Console.WriteLine(@$"Dados do item 2:
+    Nome: {item2.Nome};
+    Descrição: {item2.Descricao};
+    Preço: {item2.Preco};
+    Link: {item2.LinkDownload};
+");
