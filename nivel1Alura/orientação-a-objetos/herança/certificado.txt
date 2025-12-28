@@ -1,0 +1,38 @@
+
+
+abstract class Profissao
+{
+    public string Titulo { get;private set; }
+
+    protected Profissao(string titulo)
+    {
+        Titulo = titulo;
+    }
+}
+
+internal class Analista : Profissao
+{
+    public Analista(string titulo) : base(titulo) {}  
+
+
+}
+
+class Docente : Profissao  
+{  
+    public Docente(string titulo) : base(titulo) {}  
+}  
+
+internal class Certificado
+{
+    public Certificado(Profissao prof)
+    {
+        Console.WriteLine($"Certificado emitido para: {prof.Titulo}");
+        
+    }
+}
+
+
+Analista analista = new Analista("Analista de Sistemas");
+Docente docente = new Docente("Docente de Matemática");
+Certificado cerf1 = new(analista);
+Certificado certf2 = new(docente);

@@ -1,0 +1,42 @@
+namespace Passageiros;
+
+internal class Pessoa
+{
+    public Pessoa(string nome, int idade)
+    {
+        Nome = nome;
+        Idade = idade;
+    }
+
+    public string Nome { get;private set; }
+    public int Idade { get;private set; }
+
+
+}
+
+internal class Passageiro : Pessoa
+{
+    public int QuantidadeBilhetes { get;private set; }
+
+    public Passageiro(string nome, int idade,int quantidadeBilhetes)
+    :base(nome,idade)
+    {
+        QuantidadeBilhetes = quantidadeBilhetes;
+    }
+
+    public void ExinirDetalhes()
+    {
+        Console.WriteLine($"Nome: {this.Nome} - Idade: {this.Idade} - Bilhetes: {this.QuantidadeBilhetes}");
+    }
+}
+
+using Passageiros;
+
+Console.Clear();
+
+Passageiro p1 = new Passageiro("Lúcia", 45, 3);  
+Passageiro p2 = new Passageiro("Rodrigo", 30, 1);
+
+p1.ExinirDetalhes();
+Console.WriteLine();
+p2.ExinirDetalhes();

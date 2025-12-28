@@ -1,0 +1,45 @@
+namespace Cliente;
+
+internal class Pessoa
+{
+    public Pessoa(string nome, int idade)
+    {
+        Nome = nome;
+        Idade = idade;
+    }
+
+    public string Nome { get;internal set; }
+    public int Idade { get;private set; }
+
+}
+
+internal class ClienteVip : Pessoa
+{
+    public ClienteVip(string nome, int idade, string nivelFidelidade, string codigoVip)
+    :base(nome,idade) 
+    {
+        NivelFidelidade = nivelFidelidade;
+        CodigoVip = codigoVip;
+    }
+
+    public string NivelFidelidade { get;private set;}
+    public string CodigoVip { get; private set; }
+
+    public void ExibirSaudacoes()
+    {
+        Console.WriteLine(@$"
+        Bem vindo cliente VIP: {this.Nome}
+        Idade: {this.Idade}
+        Nível de Fidelidade: {this.NivelFidelidade}
+        Código VIP: {this.CodigoVip}
+        ");
+    }
+}
+
+using Cliente;
+Console.Clear();
+ClienteVip cliente1 = new ("Renata", 32, "Ouro", "VIP123A");  
+ClienteVip cliente2 = new ("Leonardo", 40, "Diamante", "VIP789X");  
+
+cliente1.ExibirSaudacoes();
+cliente2.ExibirSaudacoes();

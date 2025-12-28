@@ -1,0 +1,4 @@
+interface IExpiravel
+{
+    bool EstaExpirado();
+}

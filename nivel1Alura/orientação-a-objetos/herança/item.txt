@@ -1,0 +1,34 @@
+
+abstract class ItemDigital
+{
+    public string Titulo { get;  }
+
+    protected ItemDigital(string titulo)
+    {
+        this.Titulo = titulo;
+    }
+}
+
+internal class Pergaminho : ItemDigital
+{
+    public string Conteudo { get; }
+
+    public Pergaminho(string titulo,string conteudo)
+    :base( titulo)
+    {
+        this.Conteudo = conteudo;
+    }
+
+    public void MostrarDetalhes()
+    {
+        Console.WriteLine($"{this.Titulo}: {this.Conteudo}");
+    }
+}
+
+
+
+Console.Clear();
+
+Pergaminho pergaminhoAntigo = new Pergaminho("Segredos_Antigos.txt", "A chave para a sabedoria reside na observação...");
+
+pergaminhoAntigo.MostrarDetalhes();

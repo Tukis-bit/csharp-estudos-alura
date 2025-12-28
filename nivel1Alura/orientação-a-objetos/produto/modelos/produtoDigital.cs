@@ -1,14 +1,16 @@
 namespace produto.produto;
 
-class ProdutoDigital : Produto
+class ProdutoDigital : Produto, IExpiravel
 {
     private string imagem;
     private string linkDownload;
+    private DateTime DataCompra;
 
     public ProdutoDigital(string imagem, string nome, string descricao, decimal preco,string linkDownload)
     :base(imagem,nome,descricao,preco)
     {
        this.linkDownload = linkDownload;
+       this.DataCompra = DateTime.Now;
     }
 
 
@@ -27,8 +29,8 @@ class ProdutoDigital : Produto
         }
     }
 
-
-
-
-
+    public bool EstaExpirado()
+    {
+        return DateTime.Now > DataCompra.AddYears(2);
+    }
 }

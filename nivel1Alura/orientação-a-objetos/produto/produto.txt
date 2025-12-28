@@ -12,6 +12,7 @@ Console.WriteLine(@$"Dados do item 1:
     Descrição: {item1.Descricao};
     Preço: {item1.Preco};
     Estoque: {item1.Estoque};
+    Está expirado: {item2.EstaExpirado()}
 ");
 
 Console.WriteLine(@$"Dados do item 2:

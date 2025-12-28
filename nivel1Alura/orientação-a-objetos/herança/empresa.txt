@@ -1,0 +1,46 @@
+namespace Empresa.Funcionarios;
+
+internal class Funcionario
+{
+    public Funcionario(string nome, string cargo)
+    {
+        Nome = nome;
+        Cargo = cargo;
+    }
+
+    public string Nome { get; private set; }
+    public string Cargo { get; private set; }
+
+
+}
+
+internal class Freelancer : Funcionario
+{
+    public decimal ValorProjeto { get; private set; }
+
+    public Freelancer(string nome, string cargo,decimal valorProjeto)
+    :base(nome,cargo)
+    {
+        ValorProjeto = valorProjeto;
+    }
+}
+
+internal class Interno : Funcionario
+{
+    public decimal Salario { get; private set; }
+
+    public Interno(string nome, string cargo,decimal salario)
+    :base(nome,cargo)
+    {
+        Salario = salario;
+    }
+}
+
+using Empresa.Funcionarios;
+Interno f1 = new Interno("Luciana", "Desenvolvedora", 7000.00m);  
+Freelancer f2 = new Freelancer("Carlos", "Designer", 3500.00m);  
+ 
+ Console.Clear();
+Console.WriteLine($"Funcionária {f1.Nome} – Cargo: {f1.Cargo} – Salário: R$ {f1.Salario}");  
+Console.WriteLine($"Freelancer {f2.Nome} – Cargo: {f2.Cargo} – Projeto atual: R$ {f2.ValorProjeto}");  
+

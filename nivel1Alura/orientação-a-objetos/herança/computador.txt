@@ -1,0 +1,50 @@
+internal class Processador
+{
+    public Processador(string marca, string modelo)
+    {
+        this.Marca = marca;
+        this.Modelo = modelo;
+    }
+
+    public string Marca { get;  }
+    public string Modelo { get; }
+}
+
+internal class PlacaMae
+{
+    public PlacaMae(string fabricante, string socket)
+    {
+        Fabricante = fabricante;
+        Socket = socket;
+    }
+
+    public string Fabricante { get; }
+    public string Socket { get; set; }
+}
+
+internal class Computador
+{
+    public Computador(Processador processador, PlacaMae placaMae)
+    {
+        this.PlacaMae = placaMae;
+        this.Processador = processador;
+    }
+
+    public Processador Processador { get;  }
+    public PlacaMae PlacaMae { get; set; }
+
+      public void ExibirConfiguracao()
+    {
+        Console.WriteLine("Computador configurado com:");
+        Console.WriteLine($"Processador: {Processador.Marca} - {Processador.Modelo}");
+        Console.WriteLine($"Placa-mãe: {PlacaMae.Fabricante} - {PlacaMae.Socket}");
+    }
+}
+
+Console.Clear();
+
+Processador cpu = new Processador("Intel", "i7-12700K");
+PlacaMae mobo = new ("ASUS", "LGA1700");
+Computador pc = new Computador(cpu, mobo);
+
+pc.ExibirConfiguracao();

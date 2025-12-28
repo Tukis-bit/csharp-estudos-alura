@@ -1,0 +1,49 @@
+internal interface ISensor
+{
+    public void Ativar();
+    public void Desativar();
+}
+
+public class SensorTemperatura : ISensor
+{
+    private bool Ativado;
+
+    public void Ativar()
+    {
+        Ativado = true;
+        Console.WriteLine("Sensor de temperatura ativado.");
+    }
+
+    public void Desativar()
+    {
+        Ativado = false;
+        Console.WriteLine("Sensor de temperatura desativado.");
+    }
+}
+
+public class SensorPresenca : ISensor
+{
+    public bool Ativado { get; set; }
+    public void Ativar()
+    {
+        Ativado = true;
+        Console.WriteLine("Sensor de presença ativado.");
+    }
+
+    public void Desativar()
+    {
+    Ativado = false;
+    Console.WriteLine("Sensor de presença desativado.");
+    }
+}
+
+Console.Clear();
+
+SensorTemperatura temp = new SensorTemperatura();
+SensorPresenca presenca = new SensorPresenca();
+
+temp.Ativar();
+temp.Desativar();
+
+presenca.Ativar();
+presenca.Desativar();
