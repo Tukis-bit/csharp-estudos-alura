@@ -1,0 +1,61 @@
+
+
+public class Contato
+{
+    public Contato(string nome, string telefone)
+    {
+        Nome = nome;
+        Telefone = telefone;
+    }
+
+    public string Nome { get; set; }
+    public string Telefone { get; set; }
+}
+
+public class Agenda
+{
+    public string Proprietario { get; private set; }
+
+    public Agenda(string proprietario)
+    {
+        Proprietario = proprietario;
+    }
+
+    public readonly List<Contato> contatos = new();
+
+    public void AdicionarContato(Contato contato)
+    {
+        if (contatos.Any(a => a.Nome == contato.Nome))
+        {
+            Console.WriteLine("Contato com esse nome já existe na agenda");
+        }
+        else
+        {
+            contatos.Add(contato);
+        }
+    }
+
+    public void QuantidadeContatos() => Console.WriteLine($"Quantidade de contatos: {contatos.Count}");
+
+    public void ListarContatos()
+    {
+        Console.WriteLine($@"Agenda de: {Proprietario}
+Contatos:");
+        foreach (Contato c in contatos)
+        {
+            Console.WriteLine($"- {c.Nome} | {c.Telefone}");
+        }
+
+        QuantidadeContatos();
+    }
+
+
+}
+
+Console.Clear();
+
+Agenda agenda = new("Marina Souza");
+agenda.AdicionarContato(new Contato("Carlos", "11998887777"));
+agenda.AdicionarContato(new Contato("Carlos", "11991112222")); // duplicado
+agenda.AdicionarContato(new Contato("Julia", "21988776655"));
+agenda.ListarContatos();

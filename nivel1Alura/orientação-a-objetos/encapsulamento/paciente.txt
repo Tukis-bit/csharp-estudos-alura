@@ -1,0 +1,33 @@
+using System.Runtime.InteropServices.Marshalling;
+
+public class Paciente
+{
+    public Paciente(string nome, int idade)
+    {
+        this.Nome = nome;
+        this.Idade = idade;
+    }
+
+    public string Nome { get; }
+    public int Idade { get;}
+
+}
+
+internal class HistoricoMedico
+{
+    public HistoricoMedico(string codigoProntuario)
+    {
+        this.CodigoProntuario = codigoProntuario;
+    }
+
+    private string CodigoProntuario { get; }
+
+    public void ExibirCodigo()
+    {
+        Console.WriteLine($"Código: {CodigoProntuario}");
+    }
+}
+
+Paciente paciente = new Paciente("Luiz Costa", 42);
+HistoricoMedico historico = new HistoricoMedico("XPT-9987");
+historico.ExibirCodigo();

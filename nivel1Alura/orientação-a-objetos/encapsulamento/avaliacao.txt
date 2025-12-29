@@ -1,0 +1,30 @@
+public class Avaliacao
+{
+    public string Aluno { get; set; }
+
+    public double Nota { get; private set; }
+
+    public Avaliacao(string aluno)
+    {
+        Aluno = aluno;
+    }
+
+    public void AtribuirNota(double nota)
+    {
+        if (nota >= 0 && nota <= 10)
+        {
+            Nota = nota;
+        }
+        else
+        {
+            Console.WriteLine("Erro: A nota deve estar entre 0 e 10.");
+        }
+    }
+}
+
+Avaliacao avaliacao = new Avaliacao("Carla Silva");
+avaliacao.AtribuirNota(11);
+avaliacao.AtribuirNota(8.5);
+
+Console.WriteLine("Aluno: " + avaliacao.Aluno);
+Console.WriteLine("Nota atribuída: " + avaliacao.Nota);

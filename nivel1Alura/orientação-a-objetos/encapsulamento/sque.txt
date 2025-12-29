@@ -1,0 +1,43 @@
+public class ContaBancaria
+{
+    public string Titular { get; set; }
+    private double saldo;
+
+    public ContaBancaria(string titular, double saldoInicial)
+    {
+        Titular = titular;
+        saldo = saldoInicial;
+    }
+
+    public void Sacar(double valor)
+    {
+        SegurancaConta seguranca = new SegurancaConta();
+        if (seguranca.ValidarSaque(valor))
+        {
+            saldo -= valor;
+            Console.WriteLine("Saque realizado com sucesso.");
+        }
+        else
+        {
+            Console.WriteLine("Saque negado pela política de segurança.");
+        }
+    }
+
+    public double Saldo
+    {
+        get { return saldo; }
+    }
+}
+
+internal class SegurancaConta
+{
+    public bool ValidarSaque(double valor)
+    {
+        return valor <= 1000;
+    }
+}
+
+ContaBancaria conta = new ContaBancaria("Carlos Silva", 2500);
+conta.Sacar(1500);
+conta.Sacar(800);
+Console.WriteLine("Saldo atual: R$ " + conta.Saldo.ToString("F2"));

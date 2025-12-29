@@ -1,0 +1,33 @@
+internal class Veiculo
+{
+    public string Placa { get;  }
+
+    public Veiculo(string placa)
+    {
+        this.Placa = placa;
+    }
+
+    private double velocidadeAtual;
+
+    public double VelocidadeAtual { 
+        get => velocidadeAtual;
+        set
+        {
+            if(value < 0)
+            {
+              velocidadeAtual = 0;  
+            }
+
+            else
+            {
+                
+            velocidadeAtual = value;
+            }
+        } 
+     }
+}
+
+Console.Clear();
+
+Veiculo veiculo = new Veiculo("ABC-1234");
+veiculo.VelocidadeAtual = 72.5;

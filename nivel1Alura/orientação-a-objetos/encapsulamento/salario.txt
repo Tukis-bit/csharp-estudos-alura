@@ -1,0 +1,40 @@
+internal class Funcionario
+{
+    public string Nome { get;}
+    private decimal salario;
+
+    public Funcionario(string nome, decimal salario)
+    {
+        Nome = nome;
+       
+    if (salario <= 0)
+    {
+        Console.WriteLine("Salário inválido, ajustando para salário mínimo");
+        this.salario = 0;
+    }
+    else
+    {
+        this.salario = salario;
+    }
+    }
+
+    public void ReajustarSalario(decimal salario)
+    {
+        if(salario <= this.salario)
+        {
+            Console.WriteLine("Erro: novo salário deve ser maior que o salário atual");
+        }
+        else
+        {
+            this.salario = salario;
+        }
+    }
+
+    public decimal Salario => salario;
+}
+
+Console.Clear();
+
+Funcionario f = new Funcionario("Fernanda Lima", 4000);
+f.ReajustarSalario(3500); 
+f.ReajustarSalario(4200); 
