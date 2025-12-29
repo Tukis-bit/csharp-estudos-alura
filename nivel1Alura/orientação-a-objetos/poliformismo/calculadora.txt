@@ -1,0 +1,24 @@
+internal class Calculadora
+{
+    
+    public int Somar(int n1, int n2)
+    {
+        return n1 + n2;
+    }
+    public int Somar(int n1, int n2, int n3)
+    {
+        return n1 + n2 + n3;
+    }
+
+    public double Somar(double n1, double n2)
+    {
+        return n1 + n2;
+    }
+
+
+}
+
+Calculadora calc = new Calculadora();
+Console.WriteLine(calc.Somar(10, 20));
+Console.WriteLine(calc.Somar(5, 10, 15));
+Console.WriteLine(calc.Somar(3.5, 2.8));

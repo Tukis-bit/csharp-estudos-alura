@@ -1,0 +1,45 @@
+internal interface INotificacao
+{
+    public void EnviarMensagem(string mensagem);
+} 
+
+internal class Email : INotificacao
+{
+    public void EnviarMensagem(string mensagem)
+    {
+        Console.WriteLine($"Mensagem de EMAIL: {mensagem}");
+
+    }
+}
+
+internal class SMS : INotificacao
+{
+    public void EnviarMensagem(string mensagem)
+    {
+        Console.WriteLine($"Mensagem de SMS: {mensagem}");
+        
+    }
+}
+
+internal class Push : INotificacao
+{
+    public void EnviarMensagem(string mensagem)
+    {
+        Console.WriteLine($"Mensagem de Push: {mensagem}");
+        
+    }
+}
+
+Console.Clear();
+
+List<INotificacao> notificacoes = new List<INotificacao>
+{
+    new Email(),
+    new SMS(),
+    new Push()
+};
+
+foreach (var notificacao in notificacoes)
+{
+    notificacao.EnviarMensagem("Sistema fora do ar!");
+}

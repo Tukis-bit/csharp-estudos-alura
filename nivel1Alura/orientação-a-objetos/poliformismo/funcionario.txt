@@ -1,0 +1,31 @@
+internal class Funcionario
+{
+    public virtual string GerarRelatorio()
+    {
+        return "Relatorio";
+    }
+    
+}
+
+internal class Gerente : Funcionario
+{
+    public override string GerarRelatorio()
+    {
+        return "Relatório do gerente: supervisiona a equipe.";
+    }
+}
+
+internal class Desenvolvedor : Funcionario
+{
+    public override string GerarRelatorio()
+    {
+        return "Relatório do desenvolvedor: escreve código e corrige bugs.";
+    }
+}
+
+Funcionario f1 = new Gerente();
+Funcionario f2 = new Desenvolvedor();
+
+Console.WriteLine(f1.GerarRelatorio());
+Console.WriteLine(f2.GerarRelatorio());
+
