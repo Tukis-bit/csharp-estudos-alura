@@ -1,0 +1,28 @@
+internal abstract class TarefaAgendada
+{
+    public abstract void Executar();
+}
+
+internal class BackupTarefas : TarefaAgendada
+{
+    public override void Executar()
+    {
+        Console.WriteLine("Executando tarefa de backup do sistema...");
+    }
+}
+
+internal class RelatorioTarefa : TarefaAgendada
+{
+    public override void Executar()
+    {
+        Console.WriteLine("Gerando e enviando relatório diário...");
+    }
+}
+
+internal class LimpezaTarefa : TarefaAgendada
+{
+    public override void Executar()
+    {
+        Console.WriteLine("Limpando arquivos temporários do servidor...");
+    }
+}

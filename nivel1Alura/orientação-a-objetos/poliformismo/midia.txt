@@ -1,0 +1,61 @@
+using ScreenSound.Menus;
+
+internal class Midia
+{
+    public string Nome { get; }
+
+    public Midia(string nome)
+    {
+        Nome = nome;
+    }
+
+    public virtual void ExibirDetalhes()
+    {
+        
+    }
+    
+}
+
+internal class Imagem : Midia
+{
+    public string Resolucao { get; }
+
+    public Imagem(string nome, string resolucao)
+    : base(nome)
+    {
+        Resolucao = resolucao;
+    }
+
+    public override void ExibirDetalhes()
+    {
+        Console.WriteLine($"Imagem: {Nome} - Resolução: {Resolucao}  ");
+    }
+}
+
+internal class Video : Midia
+{
+    public int Duracao { get; }
+
+    public Video(string nome, int duracao) : base(nome)
+    {
+        Duracao = duracao;
+    }
+
+    public override void ExibirDetalhes()
+    {
+        Console.WriteLine($"Vídeo: {Nome} - Duração: {Duracao} minutos");
+    }
+}
+
+Console.Clear();
+
+List<Midia> midias = new List<Midia>
+{    
+    new Imagem("paisagem.jpg", "1920x1080"),
+    new Video("filme.mp4", 120)
+};
+
+foreach (Midia m in midias)
+{
+    m.ExibirDetalhes();
+}
