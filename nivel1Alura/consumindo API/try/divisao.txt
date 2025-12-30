@@ -1,0 +1,16 @@
+Console.Clear();
+
+Console.Write("Me informe o primeiro numero: ");
+int a = int.Parse(Console.ReadLine()!);
+
+Console.Write("Informe o segundo número: ");
+int b = int.Parse(Console.ReadLine()!);
+
+try
+{
+    Console.WriteLine($"A divisão entre {a} e {b} é {a / b}");
+}
+catch 
+{
+    Console.WriteLine("Essa divisão é impossivel");
+}

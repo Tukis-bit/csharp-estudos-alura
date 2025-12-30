@@ -1,0 +1,41 @@
+using System.Text.Json.Serialization;
+
+namespace Treino.API.Filmes;
+
+internal class Filmes
+{   
+    [JsonPropertyName("title")]
+    public string? Titulo { get; set; }
+    [JsonPropertyName("rank")]
+    public string Rank { get; set; }
+    [JsonPropertyName("year")]
+    public string Ano { get; set; }
+
+    public void ExibirDetalhesDoFilme()
+    {
+        Console.WriteLine($"Titulo: {Titulo}");
+        Console.WriteLine($"Ano de Lançamento: {Ano}");
+        Console.WriteLine($"Rank na Lista: {Rank}\n");
+
+    }
+}
+
+using System.Text.Json;
+using Treino.API.Filmes;
+
+Console.Clear();
+
+using(HttpClient client = new HttpClient())
+{
+    try
+    {
+        string resposta = await client.GetStringAsync("https://raw.githubusercontent.com/ArthurOcFernandes/Exerc-cios-C-/curso-4-aula-2/Jsons/TopMovies.json");
+        var filmes = JsonSerializer.Deserialize<List<Filmes>>(resposta)!;
+        filmes.ForEach(f => f.ExibirDetalhesDoFilme());
+
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Erro no programa: {ex.Message}");
+    }
+}
