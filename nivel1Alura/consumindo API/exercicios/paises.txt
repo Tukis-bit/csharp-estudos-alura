@@ -1,0 +1,52 @@
+using System.Text.Json.Serialization;
+
+namespace Treino.API.Paises;
+
+internal class Pais
+{
+    [JsonPropertyName("nome")]
+    public string? Nome { get; set; }
+    [JsonPropertyName("capital")]
+    public string? Capital { get; set; }
+    [JsonPropertyName("populacao")]
+    public int Populacao { get; set; }
+   
+    [JsonPropertyName("continente")]
+    public string? Continente { get; set; }
+    [JsonPropertyName("idioma")]
+    public string? Idioma { get; set; }
+
+    public void ExibirInfos()
+    {
+        Console.WriteLine(@$"Pais: {Nome}
+Capital: {Capital}
+Populacao: {Populacao}
+Continente: {Continente}
+Idioma: {Idioma}
+
+");
+    }
+
+
+}
+
+
+using System.Text.Json;
+using Treino.API.Paises;
+Console.Clear();
+
+using (HttpClient client = new HttpClient())
+{
+    try
+    {
+        
+    string resposta = await client.GetStringAsync("https://raw.githubusercontent.com/ArthurOcFernandes/Exerc-cios-C-/curso-4-aula-2/Jsons/Paises.json");
+    var paises = JsonSerializer.Deserialize<List<Pais>>(resposta)!;
+
+    paises.ForEach(p => p.ExibirInfos());
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
+}
