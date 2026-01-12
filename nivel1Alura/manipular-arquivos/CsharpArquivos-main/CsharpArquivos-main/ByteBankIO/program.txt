@@ -1,0 +1,116 @@
+
+
+using System.Text;
+using ByteBankIO;
+
+Console.Clear();
+
+        //esse par garante que o caminho esteja sempre correto de acordo com o caminho do diretório raiz do projeto
+        var enderecoBase = AppContext.BaseDirectory;
+        var enderecoDoArquivo = Path.Combine(enderecoBase,"contas.txt");
+
+        //possibilita que o código funcione enquanto ele está sendo usado 
+        using(var fluxoDoArquivo = new FileStream(enderecoDoArquivo, FileMode.Open))
+        {
+            var leitor = new StreamReader(fluxoDoArquivo);
+
+            // var linha = leitor.ReadLine();
+            // var texto = leitor.ReadToEnd();
+            
+            // carrega linha por linha até chegar no final do arquivo
+            while(!leitor.EndOfStream)
+            {
+                var linha = leitor.ReadLine();
+                var ContaCorrente = ConverterStringParaContaCorrente(linha);
+
+                Console.WriteLine($"Numero {ContaCorrente.Numero}, ag {ContaCorrente.Agencia}, saldo {ContaCorrente.Saldo}, titular {ContaCorrente.Titular.Nome}");
+            }
+        }
+
+        // ...
+
+static ContaCorrente ConverterStringParaContaCorrente(string linha)
+{
+    // 375 4644 2483.13 Jonatan
+
+    var campos = linha.Split(',');
+    var agencia = int.Parse(campos[0]);
+    var numero = int.Parse(campos[1]);
+    var saldoComDouble = double.Parse(campos[2].Replace('.',','));
+    var titularNome = campos[3];
+
+    Cliente titular = new();
+    titular.Nome = titularNome;
+
+    var resultado = new ContaCorrente(agencia, numero);
+    resultado.Depositar(saldoComDouble);
+    resultado.Titular = titular;
+
+    return resultado;
+}
+
+static void CriarArquivo()
+{
+    
+        var caminhoDoArquivo = "contasExportadas.csv";
+
+        using(var fluxoDoArquivo = new FileStream( caminhoDoArquivo, FileMode.Create))
+        {
+            var contaComoString = "456,7895,4789.48,Arthur Rafael";
+
+            var encoding = Encoding.UTF8;
+            var bytes = encoding.GetBytes(contaComoString);
+
+            fluxoDoArquivo.Write(bytes,0,bytes.Length);
+            
+        }
+    
+}
+
+static void CriarArquivoComWriter()
+{
+    var caminhoDoArquivo = "contasExportadas.csv";
+
+        using(var fluxoDoArquivo = new FileStream( caminhoDoArquivo, FileMode.Create))
+        using(var escritor = new StreamWriter(fluxoDoArquivo))
+    {
+        escritor.Write("456,7895,4789.48,Arthur Rafael");
+
+    }
+}
+
+static void TestaEscrita()
+{
+    var caminhoNovoArquivo = "teste.txt";
+
+    using(var fluxoDeArquivo = new FileStream(caminhoNovoArquivo, FileMode.CreateNew))
+    using(var escritor = new StreamWriter(fluxoDeArquivo))
+    {
+        for(int i = 1;i <= 10; i++)
+        {
+            escritor.WriteLine($"linha {i}");
+            escritor.Flush();
+
+        }
+    }
+}
+
+
+    static void UsarStreamDeEntrada()
+    {
+        using (var fluxoDeEntrada = Console.OpenStandardInput())
+        using (var fs = new FileStream("entradaConsole.txt", FileMode.Create))
+        {
+            var buffer = new byte[1024]; //1kb
+
+            while(true)
+            {
+                var byteslidos = fluxoDeEntrada.Read(buffer, 0, 1024);
+
+                fs.Write(buffer, 0, byteslidos);
+                fs.Flush();
+
+                Console.WriteLine($"Bytes lidos na console: {byteslidos}");
+            }
+        }
+    }   
