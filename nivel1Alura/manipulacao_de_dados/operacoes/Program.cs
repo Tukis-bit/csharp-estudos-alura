@@ -20,15 +20,106 @@ musicas.Add(musica5);
 
 
 
-ExibirPlaylist(musicas);
+// ExibirPlaylist(musicas);
 
-musicas.OrdenarPorDuracao();
-Console.WriteLine();
+var legiaoUrbana = new Playlist() { Nome = "Mais populares da Legião" };
+legiaoUrbana.Add(musica1);
+legiaoUrbana.Add(musica2);
+legiaoUrbana.Add(musica4);
+legiaoUrbana.Add(musica5);
+ 
+// ExibirPlaylist(legiaoUrbana);
 
-ExibirPlaylist(musicas);
+PlayerDeReproducao player = new();
+
+player.AdicionarNaLista(musica1);
+player.AdicionarNaLista(legiaoUrbana);
+
+ExibirFila(player);
+ExibirHistorico(player);
+
+var proxima = player.ProximaMusicaDaFila();
+Console.WriteLine("\nProxima musica na lista: \n");
+if(proxima is not null)
+{
+    Console.WriteLine($"\t - {proxima.Titulo}");
+}else
+{
+    Console.WriteLine("\nA lista de reprodução acabou");
+}
+
+
+ExibirFila(player);
+ExibirHistorico(player);
+
+
+var anterior = player.UltimaMusicaOuvida();
+Console.WriteLine("\nUltima musica Ouvida: \n");
+if(anterior is not null)
+{
+    Console.WriteLine($"\t - {anterior.Titulo}");
+}else
+{
+    Console.WriteLine("\nHistórico de rreprodução vazio!!");
+}
 
 
 
+void ExibirHistorico(PlayerDeReproducao player)
+{
+    Console.WriteLine($"\nExibindo historico de reprodução: ");
+    foreach(var musica in player.Historico())
+    {
+        
+        Console.WriteLine($"\t - {musica.Titulo} ");
+    }
+}
+
+void ExibirFila(PlayerDeReproducao play)
+{
+    Console.WriteLine($"\n  Musicas na fila de reprodução: ");
+    foreach(var mus in player.Fila())
+    {
+        Console.WriteLine($"\t {mus.Titulo}");
+    }   
+    }
+
+void ExibirMaiosTocadas(Playlist p1, Playlist p2)
+{
+    //Musica(key/identificador) int(value/valor)
+    Dictionary<Musica, int> ranking = [];
+
+    foreach(var mu in p1 )
+    {
+        ranking.Add(mu, 1);
+    }
+
+    foreach(var mu in p2)
+    {
+        // verifica se existe essa key e dá um nome para o valor (retorna booleano)
+        if(ranking.TryGetValue(mu, out int contagem))
+        {
+            contagem++;
+            ranking[mu] = contagem;
+        } else
+        {
+            ranking[mu] = 1;
+        }
+    }
+    // ainda não dá pra listar as com maior valor, então vamos criar uma classe com Icomparable
+    List<KeyValuePair<Musica, int>> top = new(ranking);
+    top.Sort(new PorContagem());
+
+    Console.WriteLine("\nMusicas mais ouvidas nas playlists: ");
+    int contador = 1;
+    foreach(var mu in top)
+    {
+        Console.WriteLine($"\t{mu.Key.Titulo}");
+        contador++;
+
+        if(contador > 3) break;
+    }
+}
 
 
 
@@ -94,6 +185,16 @@ public class Musica : IComparable
     {
         // isso combina o id de um com o id de outro e retorna um unico id combinado
         return this.Titulo.GetHashCode() ^ this.Artista.GetHashCode();
+    }
+}
+
+public class PorContagem : IComparer<KeyValuePair<Musica, int>>
+{
+    public int Compare(KeyValuePair<Musica, int> x, KeyValuePair<Musica, int> y)
+    {
+        
+        return y.Value.CompareTo(x.Value);
+    
     }
 }
 
@@ -211,4 +312,53 @@ public class Playlist : ICollection<Musica>
     }
 
 
+}
+
+class PlayerDeReproducao
+{
+    private Queue<Musica> lista = []; //primeiro a entrar e primeiro a sair(FIFO)
+    private Stack<Musica> pilha = []; //ultimo a entrar e primairo a sair(LIFO)
+    public void AdicionarNaLista(Musica musica)
+    {
+        lista.Enqueue(musica);
+    }
+
+    public void AdicionarNaLista(Playlist pĺaylist)
+    {
+        foreach(var musica in pĺaylist)
+        {
+            lista.Enqueue(musica);
+        }
+    }
+
+    public Musica? ProximaMusicaDaFila()
+    {
+        if (lista.Count() <= 0) return null;
+        var musica = lista.Dequeue();
+        pilha.Push(musica);
+        return musica;
+         
+    }
+
+    public Musica? UltimaMusicaOuvida()
+    {
+        if(pilha.Count == 0) return null;
+        return pilha.Pop();
+    }
+
+    public IEnumerable<Musica> Fila()
+    {
+        foreach(var musica in lista)
+        {
+            yield return musica;
+        }
+    }
+
+    public IEnumerable<Musica> Historico()
+    {
+        foreach(var musica in pilha)
+        {
+            yield return musica;
+        }
+    }
 }
