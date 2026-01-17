@@ -11,7 +11,9 @@ using var stream = new StreamReader(arquivo);//Lê esse texto linha a linha
 var musicas = ObterMusicas(stream);
 var could =
 ObterMusicas(stream) //1. Obteros dados
-.FiltrarPor("Coldplay"); //2. filtrar eles 
+.Where(m => m.Artista == "Coldplay")//2. filtrar eles  //where é a mesma coisa que o "FiltrarPor" que nós fizemos manualmente
+.FiltrarPor(m => m.Duracao >= 300);//a Func<Musica, bool> permite que nós coloquemos a condição dessa forma
+
 
 ExibirMusicas(could);
 
@@ -48,6 +50,12 @@ IEnumerable<Musica> ObterMusicas(StreamReader stream)
     }
 }
 
+bool FiltrarPorArtista(Musica m) => m.Artista == "Coldplay";
+bool FiltrarPorDuracao(Musica m) => m.Duracao >= 400;
+bool FiltrarPorTitulo (Musica m) => m.Titulo.Contains("nigth");
+
+Func<Musica, bool> condicao = FiltrarPorTitulo; //delegate = tipos que representão metodos com a mesma assinatura 
+
 class Musica
 {
     public string? Titulo { get; set; }
@@ -57,11 +65,11 @@ class Musica
 
 static class MusicasExtension
 {
-    public static IEnumerable<Musica> FiltrarPor(this IEnumerable<Musica> musicas, string artista)
+    public static IEnumerable<Musica> FiltrarPor(this IEnumerable<Musica> musicas,Func<Musica, bool> condicao )
 {
     foreach(var musica in musicas)
     {
-        if(musica.Artista == artista) yield return musica;
+        if(condicao(musica)) yield return musica;
     }
 }
 
