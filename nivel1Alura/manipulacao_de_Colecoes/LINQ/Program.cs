@@ -6,7 +6,74 @@ var arquivos = new FileStream("musicas.csv", FileMode.Open, FileAccess.Read);
 using var arquivo = new FileStream("musicas.csv", FileMode.Open, FileAccess.Read);//transforma os bytes do arquivo em um "texto"
 using var stream = new StreamReader(arquivo);//Lê esse texto linha a linha 
 
-var generos = ObterMusicas(stream)
+void operacaoDeVerificacaodeExistencia(StreamReader stream)
+{
+    var musicas = ObterMusicas(stream);
+
+    var artistas = musicas
+    .GroupBy(m => m.Artista)
+    .Where(g => g.Any(m => m.Duracao > 480)); //verifica e retorna se existe alguma musica com mais de 8 minutos
+
+    var reggae = musicas
+    .GroupBy(m => m.Artista)
+    .Where(g => g.Any(m => m.Genero.Contains("Reggae"))); //verifica e retorna se existe alguma artista que tenha uma musica de reggae 
+}
+
+void ArtistaComMaiorQtde (StreamReader stream)
+{
+   var artista = ObterMusicas(stream)
+    .GroupBy(m => m.Artista)
+    .Select(g =>  new { Artista = g.Key, Musicas = g, Total = g.Count() }) //cria um objeto pra cada gupo retornado pelo groupby 
+    .MaxBy(a => a.Total); //pega o artista com mais musicas
+
+    if(artista is not null)
+    Console.WriteLine($"Artista com mais musicas - {artista.Artista} - {artista.Total} musicas");
+}
+
+void OperacaoDeObtencaoDeElementos(StreamReader stream)
+{
+    var musicas = ObterMusicas(stream).ToList();
+    var primeiraMusica = musicas.First();
+    Console.WriteLine($"Primaira musica - {primeiraMusica.Titulo}");
+
+
+    var maiorMusica = musicas.MaxBy(m => m.Duracao); // pega a musica com a maior duração 
+    if(maiorMusica is not null)
+    Console.WriteLine($"Maior musica - {maiorMusica.Titulo}");
+}
+
+
+void OperacoesDeAgrupamento(StreamReader stream)
+{
+   var artistas = ObterMusicas(stream)
+    .GroupBy(m => m.Artista);
+
+    foreach(var artista in artistas)
+    {
+        Console.WriteLine(artista.Key);
+        foreach(var musica in artista)
+        {
+            Console.WriteLine($"\t - {musica.Titulo}");
+        }
+    }
+ 
+}
+
+void EstatisticasDeMusicas(StreamReader stream)
+{
+    var musicas = ObterMusicas(stream).ToList();
+    Console.WriteLine($"\nExistem {musicas.Count()} músicas na coleção.");
+    Console.WriteLine($"\nExistem {musicas.Count(m => m.Duracao > 600)} músicas com mais do que 10 minutos na coleção.");
+    Console.WriteLine($"\nA música com menor duração da coleção leva {musicas.Min(m => m.Duracao)} segundos."); // pega a menor duração da lista
+    Console.WriteLine($"\nA música com maior duração da coleção leva {musicas.Max(m => m.Duracao)} segundos.");// pega a maior duracao de uma lista 
+    Console.WriteLine($"\nA duração média das músicas da coleção é {musicas.Average(m => m.Duracao)} segundos.");
+    Console.WriteLine($"\nVocê vai levar {musicas.Sum(m => m.Duracao) / (3600 * 24) } dias para ouvir toda a coleção!");
+}
+
+
+void OperacoesDeProjecao2(StreamReader stream)
+{
+    var generos = ObterMusicas(stream)
 .SelectMany(m => m.Genero)
 .Distinct()
 .OrderBy(g => g);
@@ -15,6 +82,7 @@ Console.WriteLine("Generos diferentes: ");
 foreach(var genero in generos)
 {
     Console.WriteLine(genero);
+}
 }
 
 
